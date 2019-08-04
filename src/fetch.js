@@ -12,7 +12,7 @@ class Fetch extends Component {
   }
   render() {
     return (
-      <h1>holaa de render</h1>
+      <h1>holaa de render</h1> 
     )
   }
 }
