@@ -4,7 +4,7 @@
   align-items: center;
   width: 333px;
   justify-content: space-between;
-  padding: 0 5px 0 1rem;
+  padding: .5rem 5px .5rem 1rem;
   border-bottom: solid 1px  rgb(194, 191, 191);
 }
 .counter__actions {

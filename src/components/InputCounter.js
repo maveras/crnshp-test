@@ -22,7 +22,7 @@ class InputCounter extends Component {
     return (
       <div className="input">
         <input className="input__counter" type="text" value={this.state.value} onChange={this.onChangeHandler} placeholder="Enter a counter title"/>
-        <button className="btn btn--add" onClick={() => this.postCounterHandler()}>Add Counter</button>
+        <button disabled={!this.state.value} className={`btn btn--add ${ !this.state.value ? 'btn--disabled' : null }`} onClick={() => this.postCounterHandler()}>Add Counter</button>
       </div>
     )
   }
