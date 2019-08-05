@@ -16,7 +16,6 @@ class CountersContainer extends Component {
     filteredCounters: []
   }
   componentDidMount() {
-    console.log('mount??')
     this.fetchCounters()
   }
   deleteCounterHandler = (id) => {
@@ -106,7 +105,11 @@ class CountersContainer extends Component {
             <div className="right-controls">
               <div className="counter-list__advanced">
                 <span>Custom Filter</span>
-                <AdvancedFilter></AdvancedFilter>
+                <AdvancedFilter
+                  filteredCounters={this.state.filteredCounters}
+                  setFilteredCounters={(fc)=>this.setFilteredCounters(fc)}
+                  refreshList={this.fetchCounters}
+                  ></AdvancedFilter>
               </div>
             </div>
           </div>

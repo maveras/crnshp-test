@@ -1,3 +1,13 @@
 .advanced {
   display:flex;
 }
+
+.advanced__input {
+  height: 2rem;
+  margin-left: 1rem;
+  width: 3rem;
+  font-size: 1rem;
+  border: 1px solid #BFBFBF;
+  padding: 0;
+  border-radius: 5px;
+}

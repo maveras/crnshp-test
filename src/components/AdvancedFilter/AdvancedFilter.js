@@ -1,8 +1,38 @@
 import React, { Component } from 'react'
+import './AdvancedFilter.css'
 class AdvancedFilter extends Component {
   state = {
     value: 'none',
-    input: ''
+    input: '',
+    noFilteredCounters: []
+  }
+  componentDidMount() {
+    this.setState({noFilteredCounters: this.props.filteredCounters})
+  }
+  onChangeHandler = (e) => {
+    this.setState({value: event.target.value, input: ''})
+    if (this.state.value === 'none') {
+      this.props.refreshList()
+    }
+  }
+
+  inputHandler = (e) => {
+    const currentCounters = this.props.filteredCounters
+    let conditionalCounters = []
+    this.setState({ input: event.target.value}, () => {
+      if (this.state.value === 'less' && this.state.input !== '') {
+        conditionalCounters = currentCounters.filter(counter => Number(counter.count) < Number(this.state.input))
+        this.props.setFilteredCounters(conditionalCounters)
+      }
+      else if (this.state.value === 'greater' && this.state.input !== '') {
+        conditionalCounters = currentCounters.filter(counter => Number(counter.count) > Number(this.state.input))
+        this.props.setFilteredCounters(conditionalCounters)
+      }
+      else {
+        this.props.refreshList()
+      }
+    })
+
   }
   render () {
     return (
@@ -17,7 +47,7 @@ class AdvancedFilter extends Component {
             keyboard_arrow_down
           </i>
         </div>
-        <input type="text"/>
+        <input disabled={this.state.value==='none'} value={this.state.input} className="advanced__input" onChange={this.inputHandler} type="text"/>
       </div>
     )
   }
