@@ -1,0 +1,20 @@
+select {
+  -webkit-appearance: none;
+  border: 1px solid #BFBFBF;
+  height: 2rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+  padding-left: .2rem;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+}
+.sort-select__input {
+  position: relative;
+}
+.icon-right {
+  position: absolute;
+  top:5px;
+  right: 5px;
+  z-index: -1
+}

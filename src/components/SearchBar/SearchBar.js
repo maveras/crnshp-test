@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './SearchBar.css'
 class SearchBar extends Component {
   state = {
     value: ''
@@ -21,7 +22,7 @@ class SearchBar extends Component {
           </label>
         </div>
         <div className="search-bar__input">
-          <input className="search-bar__input" type="text" value={this.state.value} onChange={this.onChangeHandler} placeholder="Enter a counter title"/>
+          <input type="text" value={this.state.value} onChange={this.onChangeHandler} placeholder="Search by"/>
         </div>
       </div>
     )

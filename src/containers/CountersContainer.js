@@ -4,6 +4,7 @@ import InputCounter from '../components/InputCounter'
 import Counter from '../components/Counter'
 import SortBySelect from '../components/SortBySelect/SortBySelect'
 import SearchBar from '../components/SearchBar/SearchBar'
+import AdvancedFilter from '../components/AdvancedFilter/AdvancedFilter'
 import './CounterContainer.css'
 
 
@@ -95,11 +96,19 @@ class CountersContainer extends Component {
         ></InputCounter>
         <div className="counter-list">
           <div className="counter-list__controls">
-            <SearchBar
-              filteredCounters={this.state.counters}
-              setFilteredCounters={(fc)=>this.setFilteredCounters(fc)}
-              ></SearchBar>
-            <SortBySelect sortBy={(e) => this.srtBy(e)}></SortBySelect>
+            <div className="left-controls">
+              <SearchBar
+                filteredCounters={this.state.counters}
+                setFilteredCounters={(fc)=>this.setFilteredCounters(fc)}
+                ></SearchBar>
+              <SortBySelect sortBy={(e) => this.srtBy(e)}></SortBySelect>
+            </div>
+            <div className="right-controls">
+              <div className="counter-list__advanced">
+                <span>Custom Filter</span>
+                <AdvancedFilter></AdvancedFilter>
+              </div>
+            </div>
           </div>
           <div className="counter-list__items" >
           { this.state.filteredCounters.map(counter =>

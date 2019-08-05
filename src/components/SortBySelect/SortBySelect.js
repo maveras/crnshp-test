@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './SortBySelect.css'
 class SortbySelect extends Component {
   state = {
     value: 'title'
@@ -21,6 +22,9 @@ class SortbySelect extends Component {
             <option selected value="title">Title</option>
             <option value="count">Count</option>
           </select>
+          <i className="material-icons brand-color action-icon icon-right">
+            keyboard_arrow_down
+          </i>
         </div>
       </div>
     )

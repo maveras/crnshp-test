@@ -16,3 +16,15 @@ body {
 .counter-container__total {
   padding:2rem;
 }
+.counter-list {
+  width: 550px;
+}
+.counter-list__controls{
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between
+}
+.right-controls{
+  padding-top:1rem;
+  padding-left: 1rem;
+}
