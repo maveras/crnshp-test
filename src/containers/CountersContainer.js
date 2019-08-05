@@ -52,10 +52,21 @@ class CountersContainer extends Component {
       })
     })
   }
+  totalCount = () => {
+    let totalCounter = 0;
+    this.state.counters.length > 0 ?
+      totalCounter = this.state.counters
+        .map(e => e.count)
+        .reduce((acc, count) => acc + count)
+      :
+      totalCounter = 0;
+    return totalCounter;
+  }
+
   render() {
     return (
-      <div className="CounterContainer">
-        <h1 className="CounterContainer__title">Counter App</h1>
+      <div className="counter-container">
+        <h1 className="counter-container__title">Counter App</h1>
         <InputCounter refreshList={this.fetchCounters} postCounter={postCounter}></InputCounter>
           { this.state.counters.map(counter =>
             <Counter
@@ -68,6 +79,9 @@ class CountersContainer extends Component {
               key={ counter.id }
             ></Counter>
           )}
+        <div className="counter-container__total">
+          <span>Total Count: {this.totalCount()}</span>
+        </div>
       </div>
     )
   }
