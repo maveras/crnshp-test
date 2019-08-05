@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Fetch from './fetch'
+import CounterContainer from './containers/CountersContainer'
 const App = () => (
   <div>
-     <h1>Hello world!!</h1>
-     <Fetch></Fetch>
+    <CounterContainer></CounterContainer>
   </div>
 )
 ReactDOM.render(<App/>, document.getElementById('root'));
