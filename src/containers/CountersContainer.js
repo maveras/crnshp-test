@@ -3,6 +3,7 @@ import {getCounters, postCounter, deleteCounter, incrementCounter, decrementCoun
 import InputCounter from '../components/InputCounter'
 import Counter from '../components/Counter'
 import SortBySelect from '../components/SortBySelect/SortBySelect'
+import SearchBar from '../components/SearchBar/SearchBar'
 import './CounterContainer.css'
 
 
@@ -10,7 +11,8 @@ class CountersContainer extends Component {
   state = {
     loading: false,
     counters: [],
-    sortedBy: 'title'
+    sortedBy: 'title',
+    filteredCounters: []
   }
   componentDidMount() {
     console.log('mount??')
@@ -51,7 +53,8 @@ class CountersContainer extends Component {
       console.log(res)
       this.setState({
         fetchingCounters: false,
-        counters: res
+        counters: res,
+        filteredCounters: res
       })
       this.srtBy(this.state.sortedBy)
     })
@@ -67,30 +70,39 @@ class CountersContainer extends Component {
     return totalCounter;
   }
   srtBy = (type) => {
-    console.log('el type', type)
     if (type === 'count') {
-      const orderByCount = this.state.counters
+      const orderByCount = this.state.filteredCounters
         .sort((a, b) => a.count - b.count)
-      this.setState({counters: orderByCount, sortedBy: type })
+      this.setState({filteredCounters: orderByCount, sortedBy: type })
     } else {
-      const orderByName = this.state.counters
+      const orderByName = this.state.filteredCounters
         .sort((a, b) => a.title.localeCompare(b.title))
-      this.setState({counters: orderByName, sortedBy: type})
+      this.setState({filteredCounters: orderByName, sortedBy: type})
     }
 
+  }
+  setFilteredCounters = (c) => {
+    this.setState({filteredCounters: c})
   }
 
   render() {
     return (
       <div className="counter-container">
         <h1 className="counter-container__title">Counter App</h1>
-        <InputCounter refreshList={this.fetchCounters} postCounter={postCounter}></InputCounter>
+        <InputCounter
+          refreshList={this.fetchCounters}
+          postCounter={postCounter}
+        ></InputCounter>
         <div className="counter-list">
           <div className="counter-list__controls">
+            <SearchBar
+              filteredCounters={this.state.counters}
+              setFilteredCounters={(fc)=>this.setFilteredCounters(fc)}
+              ></SearchBar>
             <SortBySelect sortBy={(e) => this.srtBy(e)}></SortBySelect>
           </div>
           <div className="counter-list__items" >
-          { this.state.counters.map(counter =>
+          { this.state.filteredCounters.map(counter =>
             <Counter
               deleteCounter={ () => this.deleteCounterHandler(counter.id)}
               incrementCounter={() => this.incrementCounterHandler(counter.id)}
