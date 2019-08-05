@@ -54,7 +54,7 @@ export const deleteCounter = (data) => {
  */
 export const incrementCounter = (data) => {
   return fetch('/api/v1/counter/inc',{
-    method: 'delete',
+    method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },

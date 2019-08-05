@@ -17,7 +17,7 @@ class Counter extends Component {
             {this.props.counterCount}
           </div>
           <div className="counter__actions-main">
-            <div className="counter__actions-main__up">
+            <div className="counter__actions-main__up" onClick={this.props.incrementCounter}>
               <i className="material-icons brand-color action-icon">
                 keyboard_arrow_up
               </i>
