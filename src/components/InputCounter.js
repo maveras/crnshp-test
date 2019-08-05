@@ -9,8 +9,11 @@ class InputCounter extends Component {
     }
     this.props.postCounter(counter)
     this.props.refreshList()
+    this.setState({ value: ''})
   }
+
   onChangeHandler = (event) => {
+    console.log('pase aki')
     this.setState({
       value: event.target.value
     })
@@ -19,7 +22,7 @@ class InputCounter extends Component {
     return (
       <div className="input">
         <span>Input</span>
-        <input type="text" onChange={this.onChangeHandler} placeholder="Enter a counter title"/>
+        <input type="text" value={this.state.value} onChange={this.onChangeHandler} placeholder="Enter a counter title"/>
         <button onClick={() => this.postCounterHandler()}>Add Counter</button>
       </div>
     )

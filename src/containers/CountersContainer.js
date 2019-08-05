@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {getCounters, postCounter} from '../api/counters'
+import {getCounters, postCounter, deleteCounter} from '../api/counters'
 import InputCounter from '../components/InputCounter'
+import Counter from '../components/Counter'
 
 
 class CountersContainer extends Component {
@@ -10,6 +11,18 @@ class CountersContainer extends Component {
   }
   componentDidMount() {
     this.fetchCounters()
+  }
+  deleteCounterHandler = (id) => {
+    console.log('el id', id)
+    const counter = {
+      id
+    }
+    deleteCounter(counter)
+    .then(res => {
+      console.log('borrando', res)
+      this.fetchCounters()
+    })
+
   }
   fetchCounters = () => {
     this.setState({ fetchingCounters: true })
@@ -27,8 +40,14 @@ class CountersContainer extends Component {
       <div>
         <h1>Counter App</h1>
         <InputCounter refreshList={this.fetchCounters} postCounter={postCounter}></InputCounter>
-          {this.state.counters.map(counter =>
-            <p>{counter.title}</p>
+          { this.state.counters.map(counter =>
+            <Counter
+              deleteCounter={ () => this.deleteCounterHandler(counter.id)}
+              counterTitle={ counter.title }
+              counterId={ counter.id }
+              counterCount={ counter.count}
+              key={ counter.id }
+            ></Counter>
           )}
       </div>
     )
