@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {getCounters} from '../api/counters'
+import {getCounters, postCounter} from '../api/counters'
+import InputCounter from '../components/InputCounter'
+
+
 class CountersContainer extends Component {
   state = {
     loading: false,
@@ -23,6 +26,7 @@ class CountersContainer extends Component {
     return (
       <div>
         <h1>Counter App</h1>
+        <InputCounter refreshList={this.fetchCounters} postCounter={postCounter}></InputCounter>
           {this.state.counters.map(counter =>
             <p>{counter.title}</p>
           )}
