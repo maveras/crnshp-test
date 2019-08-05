@@ -1,18 +1,15 @@
 import React, {Component} from 'react'
+import { postCounter, getCounters } from './api/counters'
+
 class Fetch extends Component {
   componentDidMount() {
-    fetch('api/v1/counters', {
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-      .then(res => res.json())
-      .then(res => console.log(res))
+    postCounter({title: "bob"})
+    postCounter({title: "jhonn"})
+    getCounters()
   }
   render() {
     return (
-      <h1>holaa de render</h1> 
+      <h1>holaa de render</h1>
     )
   }
 }
