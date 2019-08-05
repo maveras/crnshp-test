@@ -1,4 +1,5 @@
 import React, {Component}  from 'react'
+import './InputCounter.css'
 class InputCounter extends Component {
   state = {
     value: ''
@@ -13,7 +14,6 @@ class InputCounter extends Component {
   }
 
   onChangeHandler = (event) => {
-    console.log('pase aki')
     this.setState({
       value: event.target.value
     })
@@ -21,9 +21,8 @@ class InputCounter extends Component {
   render() {
     return (
       <div className="input">
-        <span>Input</span>
-        <input type="text" value={this.state.value} onChange={this.onChangeHandler} placeholder="Enter a counter title"/>
-        <button onClick={() => this.postCounterHandler()}>Add Counter</button>
+        <input className="input__counter" type="text" value={this.state.value} onChange={this.onChangeHandler} placeholder="Enter a counter title"/>
+        <button className="btn btn--add" onClick={() => this.postCounterHandler()}>Add Counter</button>
       </div>
     )
   }

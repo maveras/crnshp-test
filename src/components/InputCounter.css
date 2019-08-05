@@ -1,0 +1,28 @@
+.input {
+  padding: 1rem;
+  display: flex;
+  align-items: center
+}
+.input__counter{
+  height: 1.5rem;
+  margin-right: 1rem;
+  width: 200px;
+  font-size: 1rem;
+}
+.btn {
+  background: none;
+	color: white;
+	border: none;
+  padding: .5rem 1rem;
+	font: inherit;
+	cursor: pointer;
+  outline: inherit;
+  border-radius: 10px;
+}
+.btn--add{
+  background: #FF404C;
+}
+
+.btn--disabled {
+  background: rgb(250, 201, 205);
+}
