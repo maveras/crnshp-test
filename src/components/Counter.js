@@ -22,7 +22,7 @@ class Counter extends Component {
                 keyboard_arrow_up
               </i>
             </div>
-            <div className="counter__actions-main__down">
+            <div className="counter__actions-main__down" onClick={this.props.decrementCounter}>
               <i className="material-icons brand-color action-icon">
                 keyboard_arrow_down
               </i>

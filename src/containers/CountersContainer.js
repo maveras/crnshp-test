@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {getCounters, postCounter, deleteCounter, incrementCounter} from '../api/counters'
+import {getCounters, postCounter, deleteCounter, incrementCounter, decrementCounter} from '../api/counters'
 import InputCounter from '../components/InputCounter'
 import Counter from '../components/Counter'
 import './CounterContainer.css'
@@ -27,8 +27,16 @@ class CountersContainer extends Component {
     const counter = {
       id
     }
-    console.log('lo q incremen', counter)
     incrementCounter(counter)
+    .then(res => {
+      this.fetchCounters()
+    })
+  }
+  decrementCounterHandler = (id) => {
+    const counter = {
+      id
+    }
+    decrementCounter(counter)
     .then(res => {
       this.fetchCounters()
     })
@@ -53,6 +61,7 @@ class CountersContainer extends Component {
             <Counter
               deleteCounter={ () => this.deleteCounterHandler(counter.id)}
               incrementCounter={() => this.incrementCounterHandler(counter.id)}
+              decrementCounter={() => this.decrementCounterHandler(counter.id)}
               counterTitle={ counter.title }
               counterId={ counter.id }
               counterCount={ counter.count}

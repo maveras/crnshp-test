@@ -70,7 +70,7 @@ export const incrementCounter = (data) => {
  * @param {Object} data
  */
 export const decrementCounter = (data) => {
-  return fetch('/api/v1/counter/inc',{
+  return fetch('/api/v1/counter/dec',{
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
