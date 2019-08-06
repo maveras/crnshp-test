@@ -113,6 +113,9 @@ class CountersContainer extends Component {
               </div>
             </div>
           </div>
+          <div className="filter-status">
+            <span> Showing {this.state.filteredCounters.length} of {this.state.counters.length}</span>
+          </div>
           <div className="counter-list__items" >
           { this.state.filteredCounters.map(counter =>
             <Counter
